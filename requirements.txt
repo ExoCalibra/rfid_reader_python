@@ -1,0 +1,4 @@
+pyserial==3.5
+typing-extensions==4.8.0
+pyautogui==0.9.54
+pywin32==306
