@@ -96,6 +96,19 @@ Turkish ID Card Details:
   Check Digit 11: 6 (Expected: 6)
 ```
 
+### Example Output for Hexadecimal RFID Card
+![RFID Card Read Example](Screenshot%202025-09-03%20041346.png)
+
+The image above shows a detailed RFID card read event displaying:
+- **Event Header**: Date, time, and sequence number
+- **Card Type**: Hexadecimal RFID Card detection
+- **Raw Data**: `AC0889B3` (8-character hex format)
+- **Hex Data**: Expanded hexadecimal representation with control characters
+- **Decimal Data**: `2886240691` (decimal conversion)
+- **Data Length**: 8 characters
+- **Timestamp**: Precise timestamp with milliseconds
+- **Card Details**: Format analysis showing short 8-digit format and numeric/alphanumeric representations
+
 ## Supported Card Types
 
 ### Turkish ID Cards (TC Kimlik)
