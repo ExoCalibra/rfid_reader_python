@@ -83,7 +83,11 @@ def main():
         print("   Check your hardware connections and drivers")
     
     print("\nTo use a different port, edit rfid_reader_test.py and change:")
+<<<<<<< HEAD
     print("   port='COM5' to port='COM[X]' where X is your preferred port")
+=======
+    print("   port='COM4' to port='COM[X]' where X is your preferred port")
+>>>>>>> 866a3992bffcfe903c35c307baaa17aacae8ab61
 
 if __name__ == "__main__":
     main()
