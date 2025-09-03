@@ -163,6 +163,12 @@ def type_decimal_data(text):
     # Method 1: Try keyboard HID simulation first (most reliable)
     if simulate_keyboard_hid(text):
         print(f"✓ HID keyboard simulation successful: {text}")
+        # Press Enter after typing
+        try:
+            pyautogui.press('enter')
+            print("✓ Enter key pressed after typing")
+        except Exception as e:
+            print(f"⚠️  Failed to press Enter: {e}")
         return True
     
     # Method 2: Try clipboard method
@@ -177,6 +183,12 @@ def type_decimal_data(text):
             # Paste using Ctrl+V
             pyautogui.hotkey('ctrl', 'v')
             print(f"✓ Clipboard paste successful: {text}")
+            # Press Enter after pasting
+            try:
+                pyautogui.press('enter')
+                print("✓ Enter key pressed after pasting")
+            except Exception as e:
+                print(f"⚠️  Failed to press Enter: {e}")
             return True
     except Exception as e:
         print(f"Clipboard method failed: {e}")
@@ -185,6 +197,12 @@ def type_decimal_data(text):
     try:
         pyautogui.write(text)
         print(f"✓ Direct typing successful: {text}")
+        # Press Enter after typing
+        try:
+            pyautogui.press('enter')
+            print("✓ Enter key pressed after typing")
+        except Exception as e:
+            print(f"⚠️  Failed to press Enter: {e}")
         return True
     except Exception as e:
         print(f"Direct typing failed: {e}")
@@ -195,6 +213,12 @@ def type_decimal_data(text):
             pyautogui.press(char)
             time.sleep(0.02)
         print(f"✓ Character-by-character typing successful: {text}")
+        # Press Enter after typing
+        try:
+            pyautogui.press('enter')
+            print("✓ Enter key pressed after typing")
+        except Exception as e:
+            print(f"⚠️  Failed to press Enter: {e}")
         return True
     except Exception as e:
         print(f"Character-by-character typing failed: {e}")
