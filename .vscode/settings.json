@@ -1,0 +1,11 @@
+{
+    "python.defaultInterpreterPath": "${env:LOCALAPPDATA}\\Programs\\Python\\Python313\\python.exe",
+    "python.analysis.extraPaths": [
+        "${env:LOCALAPPDATA}\\Programs\\Python\\Python313\\Lib\\site-packages"
+    ],
+    "code-runner.executorMap": {
+        "python": "C:\\Users\\dissc\\AppData\\Local\\Programs\\Python\\Python313\\python.exe"
+    },
+    "code-runner.runInTerminal": true,
+    "code-runner.saveFileBeforeRun": true
+}
