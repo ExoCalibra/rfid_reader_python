@@ -8,17 +8,13 @@ Python Path: C:/Users/dissc/AppData/Local/Programs/Python/Python313/python.exe
 
 # type: ignore
 import serial
-<<<<<<< HEAD
 import serial.tools.list_ports
-=======
->>>>>>> 866a3992bffcfe903c35c307baaa17aacae8ab61
 import time
 import sys
 import re
 from datetime import datetime
 from typing import Optional, Dict, Any
 
-<<<<<<< HEAD
 # Add pyautogui for keyboard input
 try:
     import pyautogui  # type: ignore
@@ -225,8 +221,6 @@ def test_auto_typing():
     
     input("Press Enter to continue...")
 
-=======
->>>>>>> 866a3992bffcfe903c35c307baaa17aacae8ab61
 class CardInfo:
     """Class to store and analyze card information"""
     
@@ -334,6 +328,26 @@ class CardInfo:
         
         return parsed
     
+    def _get_decimal_data(self) -> str:
+        """Convert hex data to decimal representation"""
+        try:
+            # For RFID cards, convert the raw data directly to decimal
+            if self.card_type == "Hexadecimal RFID Card":
+                # Convert the raw RFID data (like CAB9EAF2) to decimal
+                decimal_number = int(self.raw_data, 16)
+                return str(decimal_number)
+            else:
+                # For other cards, convert hex string to decimal
+                hex_chars = self.hex_data.replace(' ', '')
+                if len(hex_chars) % 2 == 0:
+                    # Convert entire hex string to decimal
+                    decimal_number = int(hex_chars, 16)
+                    return str(decimal_number)
+                else:
+                    return "Invalid hex format"
+        except ValueError:
+            return "Conversion error"
+    
     def get_detailed_info(self) -> str:
         """Get formatted detailed information about the card"""
         info_lines = [
@@ -371,42 +385,14 @@ class CardInfo:
                 ])
         
         return "\n".join(info_lines)
-    
-    def _get_decimal_data(self) -> str:
-        """Convert hex data to decimal representation"""
-        try:
-            # For RFID cards, convert the raw data directly to decimal
-            if self.card_type == "Hexadecimal RFID Card":
-                # Convert the raw RFID data (like CAB9EAF2) to decimal
-                decimal_number = int(self.raw_data, 16)
-                return str(decimal_number)
-            else:
-                # For other cards, convert hex string to decimal
-                hex_chars = self.hex_data.replace(' ', '')
-                if len(hex_chars) % 2 == 0:
-                    # Convert entire hex string to decimal
-                    decimal_number = int(hex_chars, 16)
-                    return str(decimal_number)
-                else:
-                    return "Invalid hex format"
-        except ValueError:
-            return "Conversion error"
 
 class EnhancedRFIDReader:
-<<<<<<< HEAD
     def __init__(self, port=None, baudrate=9600, timeout=1):
-=======
-    def __init__(self, port='COM4', baudrate=9600, timeout=1):
->>>>>>> 866a3992bffcfe903c35c307baaa17aacae8ab61
         """
         Initialize enhanced RFID reader with serial connection parameters
         
         Args:
-<<<<<<< HEAD
             port (str): Serial port (None for auto-detection)
-=======
-            port (str): Serial port (default: COM4)
->>>>>>> 866a3992bffcfe903c35c307baaa17aacae8ab61
             baudrate (int): Baud rate (default: 9600)
             timeout (int): Read timeout in seconds (default: 1)
         """
@@ -417,15 +403,12 @@ class EnhancedRFIDReader:
         self.read_count = 0
         self.last_card_info = None
         
-<<<<<<< HEAD
         # Auto-detect port if not specified
         if self.port is None:
             self.port = detect_best_com_port()
             if self.port is None:
                 raise RuntimeError("No suitable COM port found for RFID reader")
         
-=======
->>>>>>> 866a3992bffcfe903c35c307baaa17aacae8ab61
     def connect(self):
         """Establish connection to the RFID reader"""
         try:
@@ -531,31 +514,20 @@ class EnhancedRFIDReader:
         # Filter out very short reads (likely incomplete)
         if len(rfid_data) < 8:
             return None
-<<<<<<< HEAD
-    
-=======
         
->>>>>>> 866a3992bffcfe903c35c307baaa17aacae8ab61
         # Convert to hex for analysis
         hex_data = ' '.join([f'{b:02X}' for b in data])
         
         return CardInfo(rfid_data, hex_data)
     
-<<<<<<< HEAD
     def monitor_rfid(self, duration=None, show_detailed=True, auto_type=True):
-=======
-    def monitor_rfid(self, duration=None, show_detailed=True):
->>>>>>> 866a3992bffcfe903c35c307baaa17aacae8ab61
         """
         Monitor for RFID reads continuously with enhanced information
         
         Args:
             duration (int): Duration to monitor in seconds (None for infinite)
             show_detailed (bool): Whether to show detailed card information
-<<<<<<< HEAD
             auto_type (bool): Whether to automatically type decimal data to active window
-=======
->>>>>>> 866a3992bffcfe903c35c307baaa17aacae8ab61
         """
         if not self.connect():
             return
@@ -568,21 +540,14 @@ class EnhancedRFIDReader:
         print("  • Standard RFID Cards")
         print("  • Long Format RFID Cards")
         print("  • Hexadecimal RFID Cards")
-<<<<<<< HEAD
         if auto_type and AUTOGUI_AVAILABLE:
             print("  • Auto-typing decimal data to active window")
             print("  • Status: READY - Click in any text field to receive data")
-=======
->>>>>>> 866a3992bffcfe903c35c307baaa17aacae8ab61
         print("="*60)
         print("Please scan an RFID card/tag")
         print("Press Ctrl+C to stop\n")
         
         start_time = time.time()
-<<<<<<< HEAD
-=======
-        last_read = ""
->>>>>>> 866a3992bffcfe903c35c307baaa17aacae8ab61
         
         try:
             while True:
@@ -597,14 +562,8 @@ class EnhancedRFIDReader:
                 if data:
                     card_info = self.process_card_data(data)
                     
-<<<<<<< HEAD
                     if card_info:  # Removed duplicate detection - allow same card multiple times
                         self.read_count += 1
-=======
-                    if card_info and card_info.raw_data != last_read:
-                        self.read_count += 1
-                        last_read = card_info.raw_data
->>>>>>> 866a3992bffcfe903c35c307baaa17aacae8ab61
                         self.last_card_info = card_info
                         
                         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -619,7 +578,6 @@ class EnhancedRFIDReader:
                             print(f"Hex: {card_info.hex_data}")
                             print(f"Decimal: {card_info._get_decimal_data()}")
                         
-<<<<<<< HEAD
                         # Auto-type decimal data to active window
                         if auto_type and AUTOGUI_AVAILABLE:
                             decimal_data = card_info._get_decimal_data()
@@ -635,8 +593,6 @@ class EnhancedRFIDReader:
                                 except Exception as e:
                                     print(f"✗ Auto-typing failed: {e}")
                         
-=======
->>>>>>> 866a3992bffcfe903c35c307baaa17aacae8ab61
                         print("-" * 50)
                 
                 # Small delay to prevent high CPU usage
@@ -677,7 +633,6 @@ def main():
     print("Enhanced RFID Reader Test Application")
     print("Supports Turkish ID Cards and Detailed Analysis")
     print("=" * 60)
-<<<<<<< HEAD
     
     try:
         # Auto-detect the best COM port
@@ -715,57 +670,6 @@ def main():
     except Exception as e:
         print(f"✗ Error: {e}")
         print("Please check your hardware connections and try again.")
-=======
-    print(f"Port: COM4")
-    print(f"Baudrate: 9600")
-    print(f"Data bits: 8")
-    print(f"Parity: None")
-    print(f"Stop bits: 1")
-    print(f"Flow control: None")
-    print("=" * 60)
-    
-    # Test connection first
-    print("\nTesting connection...")
-    if not test_connection():
-        print("\nCannot proceed without connection")
-        return
-    
-    # Ask user what to do
-    print("\nChoose an option:")
-    print("1. Monitor RFID reads (continuous) - Detailed")
-    print("2. Monitor RFID reads (continuous) - Simple")
-    print("3. Monitor RFID reads (30 seconds) - Detailed")
-    print("4. Monitor RFID reads (30 seconds) - Simple")
-    print("5. Exit")
-    
-    while True:
-        try:
-            choice = input("\nEnter your choice (1-5): ").strip()
-            
-            reader = EnhancedRFIDReader()
-            
-            if choice == '1':
-                reader.monitor_rfid(show_detailed=True)
-                break
-            elif choice == '2':
-                reader.monitor_rfid(show_detailed=False)
-                break
-            elif choice == '3':
-                reader.monitor_rfid(duration=30, show_detailed=True)
-                break
-            elif choice == '4':
-                reader.monitor_rfid(duration=30, show_detailed=False)
-                break
-            elif choice == '5':
-                print("Goodbye!")
-                break
-            else:
-                print("Invalid choice. Please enter 1-5.")
-                
-        except KeyboardInterrupt:
-            print("\nGoodbye!")
-            break
->>>>>>> 866a3992bffcfe903c35c307baaa17aacae8ab61
 
 if __name__ == "__main__":
     main()

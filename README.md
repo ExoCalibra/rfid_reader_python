@@ -24,17 +24,11 @@ A comprehensive RFID reader application that supports Turkish ID cards and provi
   - Numeric and alphanumeric data extraction
   - Timestamp tracking
   - Read count statistics
-<<<<<<< HEAD
 - **Auto-Typing Feature**: Automatically types decimal data to the active window
 
 ### 🔧 Technical Features
 - **Automatic COM Port Detection**: Automatically finds and uses the best available COM port
 - **Serial Communication**: 9600 baud rate with automatic port selection
-=======
-
-### 🔧 Technical Features
-- **Serial Communication**: COM4 port with 9600 baud rate
->>>>>>> 866a3992bffcfe903c35c307baaa17aacae8ab61
 - **Real-time Monitoring**: Continuous or timed monitoring options
 - **Data Filtering**: Filters out incomplete reads and duplicates
 - **Error Handling**: Comprehensive error handling and status indicators
@@ -73,20 +67,12 @@ python com_port_detector.py
 
 ## Menu Options
 
-<<<<<<< HEAD
 1. **Monitor RFID reads (continuous) - Detailed + Auto-type**: Shows comprehensive card information and types decimal data
 2. **Monitor RFID reads (continuous) - Simple + Auto-type**: Shows basic card info and types decimal data
 3. **Monitor RFID reads (continuous) - Detailed (no auto-type)**: Shows detailed info without auto-typing
 4. **Monitor RFID reads (30 seconds) - Detailed + Auto-type**: Timed monitoring with detailed info and auto-typing
 5. **Monitor RFID reads (30 seconds) - Simple + Auto-type**: Timed monitoring with basic info and auto-typing
 6. **Exit**: Close the application
-=======
-1. **Monitor RFID reads (continuous) - Detailed**: Shows comprehensive card information
-2. **Monitor RFID reads (continuous) - Simple**: Shows basic card type and data
-3. **Monitor RFID reads (30 seconds) - Detailed**: Timed monitoring with detailed info
-4. **Monitor RFID reads (30 seconds) - Simple**: Timed monitoring with basic info
-5. **Exit**: Close the application
->>>>>>> 866a3992bffcfe903c35c307baaa17aacae8ab61
 
 ## Turkish ID Card Validation
 
@@ -113,22 +99,6 @@ Turkish ID Card Details:
   Check Digit 11: 6 (Expected: 6)
 ```
 
-<<<<<<< HEAD
-=======
-### Example Output for Hexadecimal RFID Card
-![RFID Card Read Example](Screenshot%202025-09-03%20041346.png)
-
-The image above shows a detailed RFID card read event displaying:
-- **Event Header**: Date, time, and sequence number
-- **Card Type**: Hexadecimal RFID Card detection
-- **Raw Data**: `AC0889B3` (8-character hex format)
-- **Hex Data**: Expanded hexadecimal representation with control characters
-- **Decimal Data**: `2886240691` (decimal conversion)
-- **Data Length**: 8 characters
-- **Timestamp**: Precise timestamp with milliseconds
-- **Card Details**: Format analysis showing short 8-digit format and numeric/alphanumeric representations
-
->>>>>>> 866a3992bffcfe903c35c307baaa17aacae8ab61
 ## Supported Card Types
 
 ### Turkish ID Cards (TC Kimlik)
@@ -151,11 +121,7 @@ The image above shows a detailed RFID card read event displaying:
 ## Configuration
 
 ### Serial Port Settings
-<<<<<<< HEAD
 - **Port**: Automatically detected (no manual configuration needed)
-=======
-- **Port**: COM4 (configurable in code)
->>>>>>> 866a3992bffcfe903c35c307baaa17aacae8ab61
 - **Baud Rate**: 9600
 - **Data Bits**: 8
 - **Parity**: None
@@ -172,11 +138,7 @@ Edit `rfid_reader_test.py` to modify:
 ## Troubleshooting
 
 ### Connection Issues
-<<<<<<< HEAD
 1. **Automatic Detection**: The system will automatically find the best available COM port
-=======
-1. Check if COM4 is the correct port
->>>>>>> 866a3992bffcfe903c35c307baaa17aacae8ab61
 2. Ensure RFID reader is properly connected
 3. Verify device drivers are installed
 4. Try different baud rates if needed
@@ -201,10 +163,8 @@ Edit `rfid_reader_test.py` to modify:
 
 - `pyserial==3.5`: Serial communication
 - `typing-extensions==4.8.0`: Type hints support
-<<<<<<< HEAD
 - `pyautogui==0.9.54`: Auto-typing functionality
-=======
->>>>>>> 866a3992bffcfe903c35c307baaa17aacae8ab61
+- `pywin32==306`: Windows API access
 
 ## File Structure
 

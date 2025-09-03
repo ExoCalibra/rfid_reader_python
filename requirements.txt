@@ -1,7 +1,4 @@
 pyserial==3.5
 typing-extensions==4.8.0
-<<<<<<< HEAD
 pyautogui==0.9.54
 pywin32==306
-=======
->>>>>>> 866a3992bffcfe903c35c307baaa17aacae8ab61
